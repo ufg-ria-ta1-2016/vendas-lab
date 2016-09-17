@@ -1,8 +1,13 @@
-package lab.rest;
+package lab.cliente;
 
-public class Produto {
-  Integer codigo;
-  String nome;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Cliente {
+
+  @Id
+  private Integer codigo;
 
   public Integer getCodigo() {
     return codigo;
@@ -12,6 +17,8 @@ public class Produto {
     this.codigo = codigo;
   }
 
+  private String nome;
+
   public String getNome() {
     return nome;
   }
@@ -19,13 +26,14 @@ public class Produto {
   public void setNome(String nome) {
     this.nome = nome;
   }
-  
-  public Produto() {
+
+  public Cliente() {
   }
 
-  public Produto(Integer codigo, String nome) {
+  public Cliente(Integer codigo, String nome) {
+    super();
     this.codigo = codigo;
     this.nome = nome;
   }
-  
+
 }

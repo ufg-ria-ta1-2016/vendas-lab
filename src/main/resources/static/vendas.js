@@ -1,1 +1,1 @@
-angular.module("vendas", []);
+angular.module("vendas", ["ngRoute"]);
