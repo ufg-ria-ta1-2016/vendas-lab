@@ -1,37 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="vendas">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vendas</title>
 <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript">
-function novoProduto() {
-	$.ajax({ 
-		   type: "POST",
-		   url: "http://localhost:8080/produto/novo",
-		   contentType: "application/json",
-		   data: '{"codigo":' + $("#txt_codigo").val()  + ',"nome":"' + $("#txt_nome").val() + '"}',
-		   success: function(data){        
-		     alert(data.nome);
-		   }
-		});	
-}
-</script>
+<script src="lib/angularjs/js/angular.min.js"></script>
+<script type="text/javascript" src="vendas.js"></script>
+<script type="text/javascript" src="produto.js"></script>
 </head>
 <body>
 	<div class="container">
-		<form class="form-horizontal">
+		<!-- Novo produto. -->
+		<form class="form-horizontal" ng-controller="novoProdutoCtrl">
 			<fieldset>
 				<!-- Form Name -->
-				<legend>Venda</legend>
+				<legend>Produto</legend>
 				<!-- Código -->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="textinput">Código</label>
 					<div class="col-md-6">
 						<input id="txt_codigo" name="codigo" type="text"
-							placeholder="Coloque aqui o código" class="form-control input-md">
+							placeholder="Coloque aqui o código" class="form-control input-md" ng-model="produto.codigo">
 					</div>
 				</div>
 				<!-- Nome -->
@@ -39,14 +30,14 @@ function novoProduto() {
 					<label class="col-md-4 control-label" for="textinput">Nome</label>
 					<div class="col-md-6">
 						<input id="txt_nome" name="nome" type="text" placeholder="Coloque aqui o nome"
-							class="form-control input-md">
+							class="form-control input-md" ng-model="produto.nome">
 					</div>
 				</div>
 				<!-- Button -->
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">
-						<button type="button" class="btn btn-primary" onclick="novoProduto()">Novo</button>
+						<button type="button" class="btn btn-primary" ng-click="novoProduto(produto)">Novo</button>
 					</div>
 				</div>
 
